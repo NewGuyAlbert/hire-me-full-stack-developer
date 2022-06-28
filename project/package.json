@@ -9,8 +9,8 @@
     "test": "nx test",
     "start:api": "ng serve api",
     "start:app": "ng serve shop",
-    "dev": "concurrently -p=\"{name}\" -n=\"NestJS,Angular\" -c=\"green,blue\" \"npm run start:api\" \"npm run start:app\"",
-    "build": "concurrently -p=\"{name}\" -n=\"NestJS,Angular\" -c=\"green,blue\" \"npx nx build api\" \"npx nx build shop\""
+    "dev": "concurrently -p=\"{name}\" -n=\"NestJS,Angular\" -c=\"green,blue\" \"npm run start:api\" \"npm run start:app --verbose\"",
+    "build": "concurrently -p=\"{name}\" -n=\"NestJS,Angular\" -c=\"green,blue\" \"npx nx build api\" \"npx nx build shop --verbose\""
   },
   "private": true,
   "dependencies": {
