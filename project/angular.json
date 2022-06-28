@@ -109,7 +109,7 @@
               }
             ],
             "styles": [
-              "apps/shop/src/theme.less",
+              "./node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
               "apps/shop/src/styles.css"
             ],
             "scripts": []
