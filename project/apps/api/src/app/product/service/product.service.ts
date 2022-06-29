@@ -1,17 +1,24 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm'
+import { Repository } from "typeorm"
+
 import { ProductDto } from '../dto/product.dto';
+import { Product } from '../../../entities/product/product.entity';
 
 @Injectable()
 export class ProductService {
-    public products: ProductDto[] = []
 
-    create(product: ProductDto): ProductDto {
-        this.products.push(product)
-        return product
+    constructor(@InjectRepository(Product) private productRepo: Repository<Product>){}
+
+    findAll(): Promise<ProductDto[]> {
+        return this.productRepo.find()
     }
 
-    findAll(): ProductDto[] {
-        return this.products
+    create(product: ProductDto): Promise<ProductDto> {
+        return this.productRepo.save(product)
     }
 
+    findOne(id: number): Promise<ProductDto> {
+        return this.productRepo.findOne({where: {id}})
+    }
 }
