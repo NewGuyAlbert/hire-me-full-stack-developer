@@ -1,0 +1,24 @@
+<nz-table #basicTable [nzData]="products">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>price</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td>
+        {{ data.name }} 
+        <br>
+        {{ data.description }}
+      </td>
+      <td>
+        {{ data.price }}
+      </td>
+      <td>
+        <button nz-button nzType="primary" (click)="addToCart(data.id)">Add</button>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
