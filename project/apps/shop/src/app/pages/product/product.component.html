@@ -1,2 +1,2 @@
-<project-product-add></project-product-add>
-<project-product-list></project-product-list>
+<project-product-add (newProduct)="addNewProduct($event)"></project-product-add>
+<project-product-list [products]="productsList" (newProductList)="addNewProductList($event)"></project-product-list>

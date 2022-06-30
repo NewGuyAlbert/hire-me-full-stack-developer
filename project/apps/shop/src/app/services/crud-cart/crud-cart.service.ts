@@ -6,9 +6,9 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class CrudProductService extends CrudService{
+export class CrudCartService extends CrudService{
 
-  private endpoint = "/api/products"
+  private endpoint = "/api/cart"
   constructor(http: HttpClient) {
     super(http);
     super.onSet(this.endpoint)

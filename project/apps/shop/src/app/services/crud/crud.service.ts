@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,10 +14,20 @@ export class CrudService {
     this.url = endpoint
   }
 
-  onGet() {
-    this.http.get(this.url).subscribe( data => {
-      console.log(data)
-    })
+  getAll(): Observable<any> {
+    return this.http.get(this.url)
+  }
+
+  read(id: number): Observable<any> {
+    return this.http.get(this.url + "/" + id)
+  }
+
+  create(data: any): Observable<any> {
+    return this.http.post(this.url, data);
+  }
+
+  delete(id: number): Observable<any> {
+    return this.http.delete(this.url + "/" + id)
   }
 
 }

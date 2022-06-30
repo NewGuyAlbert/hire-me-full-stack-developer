@@ -1,1 +1,28 @@
-<p>cart-list works!</p>
+<nz-table #basicTable [nzData]="cart">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>price</th>
+      <th>quantity</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td>
+        {{ data.product.name }} 
+        <br>
+        {{ data.product.description }}
+      </td>
+      <td>
+        {{ data.product.price }}
+      </td>
+      <td>
+        {{ data.quantity }}
+      </td>
+      <td>
+        <button nz-button nzType="primary" (click)="removeFromCart(data.product.id)">Remove</button>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

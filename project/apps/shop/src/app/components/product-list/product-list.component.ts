@@ -1,46 +1,34 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
+import { Product } from '@project/api-interfaces';
 import { CrudProductService } from '../../services/crud-product/crud-product.service';
-
-
-interface Person {
-  key: string;
-  name: string;
-  age: number;
-  address: string;
-}
+import { CrudCartService } from '../../services/crud-cart/crud-cart.service';
 
 @Component({
   selector: 'project-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent implements OnInit{
+export class ProductListComponent implements OnInit, OnChanges{
 
-  constructor(private service: CrudProductService) {}
+  @Input() public products: Product[] = []
+  @Output() public newProductList = new EventEmitter<Product[]>();
 
-  listOfData: Person[] = [
-    {
-      key: '1',
-      name: 'John Brown',
-      age: 32,
-      address: 'New York No. 1 Lake Park'
-    },
-    {
-      key: '2',
-      name: 'Jim Green',
-      age: 42,
-      address: 'London No. 1 Lake Park'
-    },
-    {
-      key: '3',
-      name: 'Joe Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park'
-    }
-  ];
+  constructor(private serviceProduct: CrudProductService, private serviceCart: CrudCartService) {}
 
-  ngOnInit(): void {
-    this.service.onGet()
+  ngOnInit(){
+    this.serviceProduct.getAll().subscribe( (products) => {
+      this.newProductList.emit(products)
+    })
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.products = changes['products'].currentValue
+  }
+
+  addToCart(id: number){
+    console.log(id)
+    this.serviceCart.create({productId: id}).subscribe( () => {
+      console.log("added to cart")
+    })
   }
 }
