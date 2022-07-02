@@ -1,7 +1,7 @@
-import { CartEntity } from './cart.entity';
+import { Cart } from './cart.entity';
 
 describe('CartEntity', () => {
   it('should be defined', () => {
-    expect(new CartEntity()).toBeDefined();
+    expect(new Cart()).toBeDefined();
   });
 });
