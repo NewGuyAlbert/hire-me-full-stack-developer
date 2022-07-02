@@ -26,7 +26,6 @@ export class ProductListComponent implements OnInit, OnChanges{
   }
 
   addToCart(id: number){
-    console.log(id)
     this.serviceCart.create({productId: id}).subscribe( () => {
       console.log("added to cart")
     })

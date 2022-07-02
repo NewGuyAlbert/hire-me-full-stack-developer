@@ -1,4 +1,7 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NzTableModule } from 'ng-zorro-antd/table';
+
 
 import { CartListComponent } from './cart-list.component';
 
@@ -8,7 +11,8 @@ describe('CartListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CartListComponent ]
+      declarations: [ CartListComponent ],
+      imports: [ HttpClientTestingModule, NzTableModule ]
     })
     .compileComponents();
   });

@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NavbarComponent } from '../../components/navbar/navbar.component';
 
 import { NotFoundComponent } from './not-found.component';
 
@@ -8,7 +9,7 @@ describe('NotFoundComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NotFoundComponent ]
+      declarations: [ NotFoundComponent, NavbarComponent ]
     })
     .compileComponents();
   });
