@@ -11,9 +11,16 @@ import { AppController } from './app.controller';
 import { ProductModule } from './product/product.module';
 import { CartModule } from './cart/cart.module';
 
+//for deploying
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'shop'),
+      exclude: ['/api*']
+    }),
     TypeOrmModule.forRoot({
       type: "postgres",
       host: process.env.DB_HOST,
