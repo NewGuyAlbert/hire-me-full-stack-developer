@@ -6,7 +6,7 @@
     "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main",
     "start": "nx serve",
-    "test": "nx test",
+    "test": "npx nx run-many --all --target=test",
     "start:api": "ng serve api",
     "start:app": "ng serve shop",
     "dev": "concurrently -p=\"{name}\" -n=\"NestJS,Angular\" -c=\"green,blue\" \"npm run start:api\" \"npm run start:app --verbose\"",

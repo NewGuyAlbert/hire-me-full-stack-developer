@@ -11,9 +11,7 @@ export class ProductComponent{
   public productsList: Product[] = []
 
   addNewProduct(product: Product){
-    this.productsList.push(product)
-    //Without the following line, it does not detect change and child isn't updated
-    this.productsList = [...this.productsList]
+    this.productsList = [...this.productsList, product]
   }
 
   addNewProductList(productList: Product[]){

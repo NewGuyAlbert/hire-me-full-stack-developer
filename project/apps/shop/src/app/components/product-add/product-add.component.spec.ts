@@ -1,4 +1,8 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzModalModule } from 'ng-zorro-antd/modal';
 
 import { ProductAddComponent } from './product-add.component';
 
@@ -8,7 +12,14 @@ describe('ProductAddComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProductAddComponent ]
+      declarations: [ ProductAddComponent ],
+      imports: [
+        FormsModule, 
+        ReactiveFormsModule, 
+        HttpClientTestingModule, 
+        NzModalModule,
+        NzButtonModule
+      ]
     })
     .compileComponents();
   });
