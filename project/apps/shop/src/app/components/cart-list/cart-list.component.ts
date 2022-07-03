@@ -14,8 +14,9 @@ export class CartListComponent implements OnInit, OnChanges{
 
   @Input() public cart: DisplayCart[] = []
   public originalCart: Cart[] = []
-  @Output() public newCart = new EventEmitter<DisplayCart[]>();
-  @Output() public removedItem = new EventEmitter<number>();
+  @Output() public newCart = new EventEmitter<DisplayCart[]>()
+  @Output() public removedItem = new EventEmitter<number>()
+  public total = 0
 
   constructor(private serviceCart: CrudCartService, private serviceProduct: CrudProductService) {}
 
@@ -41,11 +42,20 @@ export class CartListComponent implements OnInit, OnChanges{
       }
 
       this.newCart.emit(noDuplicatesCart)
+      this.getTotal()
     })
   }
   
   ngOnChanges(changes: SimpleChanges): void {
     this.cart = changes['cart'].currentValue
+    this.getTotal()
+  }
+
+  getTotal(){
+    this.total = 0
+    for(let i = 0; i < this.cart.length; i++){
+      this.total += this.cart[i].product.price * this.cart[i].quantity
+    }
   }
 
   removeFromCart(productId: number){
@@ -62,4 +72,15 @@ export class CartListComponent implements OnInit, OnChanges{
       }
     }
   }
+
+  checkout(){
+    this.emptyCart()
+  }
+
+  emptyCart(){
+    this.serviceCart.deleteAll().subscribe( () => {
+      this.newCart.emit([])
+    })
+  }
+
 }

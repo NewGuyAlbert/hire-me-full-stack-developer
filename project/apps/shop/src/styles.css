@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  overflow: hidden;
+}
+
+#header, #subHeader, #navbar, #addProductButton, #productList, #cartList {
+  margin: 0.5rem 2rem;
+}
+
+.nameDiv {
+  display: flex;
+}
+
+.nameDiv > i {
+  margin: 0rem 1rem 0rem 0rem;
+  font-size: 2.5rem;
+}
+
+.ant-table-tbody > tr > td {
+  border: none;
+}
+
+.secondaryColor {
+  color: grey !important;
+}
+
+.boldFont {
+  font-weight: bold;
+}

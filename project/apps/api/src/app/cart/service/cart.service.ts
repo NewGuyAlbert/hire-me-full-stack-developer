@@ -21,4 +21,8 @@ export class CartService {
     delete(id: number){
         return this.cartRepo.delete({id})
     }
+
+    deleteAll(){
+        return this.cartRepo.clear()
+    }
 }
