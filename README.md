@@ -22,11 +22,11 @@ Jest
 
 ## Local setup
 
-** Prerequisites
+** Prerequisites **
 - NodeJs version 14 or higher
 - Docker
 
-** Steps:
+** Steps: **
 1. Git clone
 2. navigate to 'cd hire-me-full-stack-developer' and run 'docker compose up' (Docker needs to be open)
 3. navigate to 'cd project' and run 'npm install'
@@ -37,13 +37,13 @@ Jest
     DB_PASSWORD=root
     DB_DATABASE=postgres
 
-** Start application:
+** Start application: **
 - dev:
     'npm run dev'
 - production:
     'npm start'
 
-** Notable scripts:
+** Notable scripts: **
 - 'npm test' to run all unit tests
 - 'npm build' to build application into dist folder
 
