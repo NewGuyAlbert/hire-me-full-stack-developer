@@ -1,28 +1,67 @@
-<nz-table #basicTable [nzData]="cart">
+<nz-table id="cartList" #basicTable [nzData]="cart">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>price</th>
-      <th>quantity</th>
-      <th>Action</th>
+      <th class="secondaryColor">Name</th>
+      <th class="secondaryColor">Price</th>
+      <th class="secondaryColor">Quantity</th>
+      <th class="secondaryColor">Action</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let data of basicTable.data">
-      <td>
-        {{ data.product.name }} 
-        <br>
-        {{ data.product.description }}
+      <td class="nameDiv">
+        <i nz-icon nzType="code-sandbox-circle" nzTheme="fill"></i>
+        <div>
+          <span class="boldFont">
+            {{ data.product.name }} 
+          </span>
+          <br>
+          <span class="secondaryColor">
+            {{ data.product.description }}
+          </span>
+        </div>
       </td>
       <td>
-        {{ data.product.price }}
+        <span class="boldFont">
+          ${{ data.product.price }}
+        </span>
       </td>
       <td>
-        {{ data.quantity }}
+        <span class="boldFont">
+          {{ data.quantity }}
+        </span>
       </td>
       <td>
-        <button nz-button nzType="primary" (click)="removeFromCart(data.product.id)">Remove</button>
+        <button nz-button nzType="default" nzDanger (click)="removeFromCart(data.product.id)">
+          <i nz-icon nzType="delete" nzTheme="fill"></i>
+          Remove</button>
       </td>
     </tr>
   </tbody>
+  <tr>
+    <td><nz-divider></nz-divider></td>
+    <td><nz-divider></nz-divider></td>
+    <td><nz-divider></nz-divider></td>
+    <td><nz-divider></nz-divider></td>
+  </tr>
+  <tr>
+    <td>
+      <span class="secondaryColor">
+        Total:
+      </span>
+      <span class="boldFont">
+        ${{total}}
+      </span>
+    </td>
+    <td></td>
+    <td>
+      <button nz-button nzType="primary" (click)="checkout()">Complete Purchase</button>
+    </td>
+    <td>
+      <button nz-button nzType="default" nzDanger (click)="emptyCart()">
+        <i nz-icon nzType="delete" nzTheme="fill"></i> 
+        Remove all
+      </button>
+    </td>
+  </tr>
 </nz-table>

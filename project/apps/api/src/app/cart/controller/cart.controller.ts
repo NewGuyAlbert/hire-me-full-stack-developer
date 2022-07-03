@@ -21,5 +21,10 @@ export class CartController {
         return this.service.delete(id)
     }
 
+    @Delete('/')
+    deleteAll(){
+        return this.service.deleteAll()
+    }
+
 
 }
