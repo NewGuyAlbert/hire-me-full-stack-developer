@@ -1,23 +1,35 @@
-<nz-table #basicTable [nzData]="products">
+<nz-table [nzPageSize]=4 id="productList" #basicTable [nzData]="products">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>price</th>
-      <th>Action</th>
+      <th class="secondaryColor">Name</th>
+      <th class="secondaryColor">Price</th>
+      <th class="secondaryColor">Action</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let data of basicTable.data">
-      <td>
-        {{ data.name }} 
-        <br>
-        {{ data.description }}
+      <td class="nameDiv">
+        <i nz-icon nzType="code-sandbox-circle" nzTheme="fill"></i>
+        <div>
+          <span class="boldFont">
+            {{ data.name }} 
+          </span>
+          <br>
+          <span class="secondaryColor">
+            {{ data.description }}
+          </span>
+        </div>
       </td>
       <td>
-        {{ data.price }}
+        <span class="boldFont">
+          ${{ data.price }}
+        </span>
       </td>
       <td>
-        <button nz-button nzType="primary" (click)="addToCart(data.id)">Add</button>
+        <button nz-button nzType="primary" (click)="addToCart(data.id)">
+          <i nz-icon nzType="shopping-cart" nzTheme="outline"></i>
+          Add
+        </button>
       </td>
     </tr>
   </tbody>

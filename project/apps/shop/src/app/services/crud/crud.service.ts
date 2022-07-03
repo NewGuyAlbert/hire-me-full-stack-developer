@@ -30,4 +30,8 @@ export class CrudService {
     return this.http.delete(this.url + "/" + id)
   }
 
+  deleteAll(): Observable<any> {
+    return this.http.delete(this.url)
+  }
+
 }

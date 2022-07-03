@@ -1,2 +1,4 @@
-<project-product-add (newProduct)="addNewProduct($event)"></project-product-add>
+<h2 id="header">Product catalog</h2>
+<h3 id="subHeader"  class="secondaryColor">List of available products</h3>
+<project-product-add id="addProductButton" (newProduct)="addNewProduct($event)"></project-product-add>
 <project-product-list [products]="productsList" (newProductList)="addNewProductList($event)"></project-product-list>
