@@ -2,15 +2,18 @@
   "name": "project",
   "version": "0.0.0",
   "license": "MIT",
+  "engines" : {
+    "node" : "16.15.0"
+  },
   "scripts": {
     "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main",
-    "start": "nx serve",
+    "start": "node dist/apps/api/main",
     "test": "npx nx run-many --all --target=test",
     "start:api": "ng serve api",
     "start:app": "ng serve shop",
     "dev": "concurrently -p=\"{name}\" -n=\"NestJS,Angular\" -c=\"green,blue\" \"npm run start:api\" \"npm run start:app --verbose\"",
-    "build": "concurrently -p=\"{name}\" -n=\"NestJS,Angular\" -c=\"green,blue\" \"npx nx build api\" \"npx nx build shop --verbose\""
+    "build-local": "concurrently -p=\"{name}\" -n=\"NestJS,Angular\" -c=\"green,blue\" \"npx nx build api\" \"npx nx build shop --verbose\""
   },
   "private": true,
   "dependencies": {
@@ -25,6 +28,7 @@
     "@nestjs/common": "^8.0.0",
     "@nestjs/core": "^8.0.0",
     "@nestjs/platform-express": "^8.0.0",
+    "@nestjs/serve-static": "^2.2.2",
     "@nestjs/typeorm": "^8.1.4",
     "@nrwl/angular": "13.3.11",
     "class-validator": "^0.13.2",
