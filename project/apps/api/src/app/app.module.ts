@@ -29,7 +29,7 @@ import { join } from 'path';
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
       entities: entities,
-      synchronize: true,
+      synchronize: true
     }),
       ProductModule,
       CartModule

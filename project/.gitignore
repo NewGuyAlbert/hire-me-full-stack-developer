@@ -4,7 +4,7 @@
 .env
 
 # compiled output
-/apps
+/dist
 /tmp
 /out-tsc
 
